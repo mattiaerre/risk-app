@@ -24,14 +24,16 @@ function makeDescription(result) {
 }
 
 function App() {
-  const [attackerDice, setAttackerDice] = useState(3);
-  const [defenderDice, setDefenderDice] = useState(2);
+  const [attackerDiceNumber, setAttackerDiceNumber] = useState(3);
+  const [defenderDiceNumber, setDefenderDiceNumber] = useState(2);
   const [result, setResult] = useState(null);
 
   return (
     <main className="App__main">
       <label>
-        <select onChange={(e) => setAttackerDice(parseInt(e.target.value, 10))}>
+        <select
+          onChange={(e) => setAttackerDiceNumber(parseInt(e.target.value, 10))}
+        >
           <option value={3}>3</option>
           <option value={2}>2</option>
           <option value={1}>1</option>
@@ -39,7 +41,9 @@ function App() {
         attacker
       </label>
       <label>
-        <select onChange={(e) => setDefenderDice(parseInt(e.target.value, 10))}>
+        <select
+          onChange={(e) => setDefenderDiceNumber(parseInt(e.target.value, 10))}
+        >
           <option value={2}>2</option>
           <option value={1}>1</option>
         </select>
@@ -47,7 +51,7 @@ function App() {
       </label>
       <button
         onClick={() => {
-          setResult(battle({ attacker: attackerDice, defender: defenderDice }));
+          setResult(battle({ attackerDiceNumber, defenderDiceNumber }));
         }}
       >
         3, 2, 1 ...
